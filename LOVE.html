@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Love Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffe6f0;
+            text-align: center;
+            padding: 50px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>💖 Love Calculator 💖</h1>
+
+    <input type="text" id="name1" placeholder="Enter your name">
+    <br>
+    <input type="text" id="name2" placeholder="Enter partner's name">
+    <br>
+    <button onclick="calculateLove()">Calculate</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculateLove() {
+            let name1 = document.getElementById("name1").value.toLowerCase();
+            let name2 = document.getElementById("name2").value.toLowerCase();
+            let score = 0;
+
+            // Calculate score for name1
+            for (let ch of name1) {
+                if (ch === 'l' || ch === 'o' || ch === 'v' || ch === 'e') {
+                    score += 10;
+                }
+            }
+
+            // Calculate score for name2
+            for (let ch of name2) {
+                if (ch === 'l' || ch === 'o' || ch === 'v' || ch === 'e') {
+                    score += 10;
+                }
+            }
+
+            let lovePercentage = score % 101;
+            let message = "";
+
+            if (lovePercentage > 80)
+                message = "You are a perfect match! 💕";
+            else if (lovePercentage > 50)
+                message = "Good connection! 😊";
+            else if (lovePercentage > 30)
+                message = "It needs some effort 🙂";
+            else
+                message = "Just friends maybe 😄";
+
+            document.getElementById("result").innerHTML =
+                `<p>${name1} ❤️ ${name2}</p>
+                 <p>Love Percentage: <b>${lovePercentage}%</b></p>
+                 <p>${message}</p>`;
+        }
+    </script>
+
+</body>
+</html>
